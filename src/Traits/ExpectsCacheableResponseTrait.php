@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PNX\DrupalTestUtils\Traits;
 
+use Behat\Mink\Exception\UnsupportedDriverActionException;
 use Drupal\Core\Url;
 
 /**
