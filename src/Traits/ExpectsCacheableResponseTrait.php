@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PNX\DrupalTestUtils;
+namespace PNX\DrupalTestUtils\Traits;
 
 use Drupal\Core\Url;
 
