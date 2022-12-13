@@ -1,0 +1,22 @@
+{
+    "name": "previousnext/drupal-test-utils",
+    "description": "Utility traits for Drupal testing.",
+    "type": "library",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Adam Bramley",
+            "email": "adam@previousnext.com.au"
+        }
+    ],
+    "require": {
+        "php": "^8"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "PNX\\DrupalTestUtils\\": "src"
+        }
+    },
+}
