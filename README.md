@@ -2,6 +2,25 @@
 
 Utilities for testing Drupal!
 
+## ErrorMessageDetectionTrait
+
+A trait to detect error messages in `drupalGet` responses and display the error message when the test fails.
+
+### Usage
+
+Once your trait is added to your test base class, you can check detect errors by overriding the `drupalGet` function.
+
+```php
+/**
+ * {@inheritdoc}
+ */
+protected function drupalGet($path, array $options = [], array $headers = []): string {
+  $response = parent::drupalGet($path, $options, $headers);
+  $this->detectErrorMessageInResponseOutput($response);
+  return $response;
+}
+```
+
 ## ExpectsCacheableResponseTrait
 
 A trait to add Dynamic Page Cache cacheability testing to every request in your Functional tests.
