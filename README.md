@@ -25,7 +25,7 @@ abstract class MyBaseClass extends ExistingSiteBase {
   }
 
 }
-```  
+```
 
 In a test case, call `$this->setConfigValues`:
 
@@ -37,6 +37,29 @@ $this->setConfigValues([
 ]);
 ```
 
+## EntityLoadTrait
+
+A trait to assist with loading entities in tests.
+
+### Usage
+
+Load one node with the title "Hello, World":
+
+```php
+$node = $this->loadEntityByProperty('node', ['title' => 'Hello, World']);
+```
+
+Load all article nodes:
+
+```php
+$nodes = $this->loadEntityByProperty('node', ['type' => 'article'], FALSE);
+```
+
+Get the last created node. Useful for asserting on entities created via the UI:
+
+```php
+$node = $this->getLastCreatedEntity('node');
+```
 
 ## ExpectsCacheableResponseTrait
 
