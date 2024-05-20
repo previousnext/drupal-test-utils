@@ -2,6 +2,42 @@
 
 Utilities for testing Drupal!
 
+## ConfigTrait
+
+A trait to facilitate overriding config for the duration of a test.
+
+### Usage
+
+Add the trait to your base class and override the tearDown method.
+
+```php
+use PNX\DrupalTestUtils\Traits\ConfigTrait;
+use weitzman\DrupalTestTraits\ExistingSiteBase;
+
+abstract class MyBaseClass extends ExistingSiteBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function tearDown(): void {
+    $this->setConfigValues($this->originalConfiguration, FALSE);
+    parent::tearDown();
+  }
+
+}
+```  
+
+In a test case, call `$this->setConfigValues`:
+
+```php
+$this->setConfigValues([
+  'system.logging' => [
+    'error_level' => \ERROR_REPORTING_DISPLAY_VERBOSE,
+  ],
+]);
+```
+
+
 ## ExpectsCacheableResponseTrait
 
 A trait to add Dynamic Page Cache cacheability testing to every request in your Functional tests.
