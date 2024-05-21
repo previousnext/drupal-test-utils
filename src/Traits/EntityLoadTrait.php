@@ -27,7 +27,7 @@ trait EntityLoadTrait {
   /**
    * Load the last created entity of a given type.
    */
-  protected function lastCreatedEntity(string $type): ?EntityInterface {
+  protected function lastCreatedEntity(string $type): EntityInterface {
     $type_manager = \Drupal::entityTypeManager();
     $id_key = $type_manager->getDefinition($type)->getKey('id');
     $results = \Drupal::entityQuery($type)->sort($id_key, 'DESC')->range(0, 1)->accessCheck(FALSE)->execute();
