@@ -10,7 +10,9 @@
         }
     ],
     "require": {
-        "php": "^8"
+        "php": "^8",
+        "drupal/core-utility": "^10 || ^11",
+        "symfony/validator": "^5 || ^6 || ^7"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
