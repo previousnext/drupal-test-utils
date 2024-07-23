@@ -118,5 +118,5 @@ $this->assertEquals([
   'Title' => 'Foo bar',
   'Content type' => 'Basic',
   'Status' => 'Published',
-]);
+], $row);
 ```
