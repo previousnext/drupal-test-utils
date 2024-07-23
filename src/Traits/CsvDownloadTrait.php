@@ -18,18 +18,15 @@ trait CsvDownloadTrait {
    * Clicks the orange 'CSV' button displayed in views, waits for batch to run,
    * then asserts contents of download.
    */
-  protected function assertViewsCsvExportRowCount(int $count, bool $isBatch = TRUE): Reader {
-    $this->clickLink('Download CSV');
+  protected function assertViewsCsvExportRowCount(int $count, bool $isBatch = TRUE, string $csvLinkText = 'Download CSV'): Reader {
+    $this->clickLink($csvLinkText);
     $csvReader = $this->waitForCsv($isBatch);
     $this->assertCount($count, $csvReader->getRecords());
     return $csvReader;
   }
 
   /**
-   * Asserts that a CSV export has a certain number of rows.
-   *
-   * Clicks the orange 'CSV' button displayed in views, waits for batch to run,
-   * then asserts contents of download.
+   * Wait for a CSV to finish (batch or standard) and return a Reader.
    */
   protected function waitForCsv(bool $isBatch = TRUE): Reader {
     if ($isBatch) {
