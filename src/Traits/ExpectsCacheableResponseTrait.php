@@ -35,7 +35,7 @@ trait ExpectsCacheableResponseTrait {
     }
 
     try {
-      if ($this->getSession()->getResponseHeader('X-Drupal-Dynamic-Cache') === 'UNCACHEABLE') {
+      if (\str_contains($this->getSession()->getResponseHeader('X-Drupal-Dynamic-Cache'), 'UNCACHEABLE')) {
         $this->fail(sprintf('Found an un-cacheable response at path: %s. If your test visits uncachable pages (cache-lifetime of zero) add them to static::$uncacheableDynamicPagePatterns in the test.', $this->buildUrl($path, $options)));
       }
     }
