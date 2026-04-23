@@ -97,3 +97,26 @@ E.g
    '/node/add/.*',
  ];
 ```
+
+## CsvDownloadTrait
+
+A trait to interact with Views CSV exports making it easy to make assertions on CSV output.
+
+This trait requires the `league/csv` library which is included in the views_data_export module (via csv_serialization).
+
+### Usage
+
+Once your trait is added to your test base class, you can get CSV output into a variable and then make assertions on the contents.
+
+```php
+$this->drupalGet('admin/content');
+// Pass TRUE if your CSV is batched, otherwise FALSE.
+$csv = $this->assertViewsCsvExportRowCount(3, TRUE);
+$csv->next();
+$row = $csv->current();
+$this->assertEquals([
+  'Title' => 'Foo bar',
+  'Content type' => 'Basic',
+  'Status' => 'Published',
+], $row);
+```
